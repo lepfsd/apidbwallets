@@ -2,21 +2,21 @@ version: '3.7'
 
 services:
   app: 
-    image: app_nest_flights:v1
-    container_name: app_nest_flights
+    image: app_nest_bd:v1
+    container_name: app_nest_bd
     build: .
     env_file: .env
     ports: 
-      - 4000:4000
+      - 3001:3001
     depends_on:
       - mongodb
     restart: always
     networks:
-      - ms_nestjs1
+      - ms_nestjs
 
   mongodb: 
     image: mongo:latest
-    container_name: mongodb_fl
+    container_name: mongodb_img
     restart: always
     environment:
       - MONGO_DATA_DIR=/data/db
@@ -28,12 +28,12 @@ services:
     ports:
       - 27017:27017
     networks:
-      - ms_nestjs1
+      - ms_nestjs
 
 volumes:
   mongodb:
 
 networks:
-  ms_nestjs1:
+  ms_nestjs:
 
     
